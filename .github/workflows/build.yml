@@ -21,7 +21,7 @@ jobs:
       run: |
         gem update --system 3.3.22
         gem install jekyll bundle
-        bundle update  #官网上写的，折腾了半天才发现
+        bundle update  # 官网上写的，折腾了半天才发现
 
     - name: Install dependencies
       run: |
