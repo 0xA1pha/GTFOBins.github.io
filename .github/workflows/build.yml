@@ -17,23 +17,23 @@ jobs:
       with:
         ruby-version: 3.1.2  # 确保选择与您的项目兼容的Ruby版本
         
-    - name: Install correct Bundler version
+    - name: Install Bundle
       run: |
         gem update --system 3.3.22
         gem install jekyll bundle
-        
+        bundle update  #官网上写的，折腾了半天才发现
 
     - name: Install dependencies
       run: |
-          bundle update  #官网上写的，折腾了半天
+          
           bundle install
         
     - name: Build the site
       run: bundle exec jekyll build
       
     - name: Archive production artifacts
-          uses: actions/upload-artifact@v4
-          with:
-            name: GTFOBins  # 构件的名称
-            path: _site/      # 要包含在构件中的路径，这里是Jekyll生成的站点目录
-            retention-days: 5 # 可选：设置构件保留天数，默认90天
+      uses: actions/upload-artifact@v4
+      with:
+        name: GTFOBins  # 构件的名称
+        path: _site/      # 要包含在构件中的路径，这里是Jekyll生成的站点目录
+        retention-days: 5 # 可选：设置构件保留天数，默认90天
